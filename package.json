@@ -1,11 +1,11 @@
 {
   "name": "talk-with-renchon",
+  "version": "1.0.0",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/node": "^16.10.1",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/webpack": "^5.28.0",

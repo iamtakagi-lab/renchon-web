@@ -169,3 +169,36 @@ h2 {
   color: #3b82f6;
   border-color: #3b82f6;
 }
+
+#twitter_share_btn {
+  cursor: pointer;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  margin-left: 0.5rem;
+  background-color: #3b82f6;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+#twitter_share_btn:hover {
+  background-color: transparent;
+  color: #3b82f6;
+  border-color: #3b82f6;
+}

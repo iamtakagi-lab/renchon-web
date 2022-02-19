@@ -3,6 +3,20 @@
   src: url('./fonts/MPLUS1p-Regular.ttf') format('truetype');
 }
 
+@keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+details {
+  cursor: pointer;
+}
+
 * {
   font-family: 'MPLUS1p-Regular', sans-serif;
 }

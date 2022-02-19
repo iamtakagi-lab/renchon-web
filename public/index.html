@@ -9,10 +9,7 @@
       property="og:title"
       content="れんちょんと会話できるサービス / talk-with-renchon"
     />
-    <meta
-      property="og:description"
-      content="れんちょんと話そう！"
-    />
+    <meta property="og:description" content="れんちょんと話そう！" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="stylesheet" href="./index.css" />
     <script src="./assets/main.js" defer></script>
@@ -279,9 +276,28 @@
           10％の確率で「にゃんぱすー」を返してくれます。
         </span>
       </details>
-      <button id="twitter_share_btn" onclick="location.href='https://twitter.com/intent/tweet?text=れんちょんと会話できるサービス / talk-with-renchon&url=https://talk-with-renchon.vercel.app&via=nyanpassnanon'">🐥Twitterでシェア</button>
+      <button
+        id="twitter_share_btn"
+        onclick="location.href='https://twitter.com/intent/tweet?text=れんちょんと会話できるサービス / talk-with-renchon&url=https://talk-with-renchon.vercel.app&via=nyanpassnanon'"
+      >
+        🐥Twitterでシェア
+      </button>
     </nav>
     <hr />
     <main id="app"></main>
   </body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-53DMWYCJNE"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-53DMWYCJNE");
+  </script>
 </html>

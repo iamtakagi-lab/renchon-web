@@ -31,7 +31,6 @@ const doJanken = (value: string): string => {
     if (pick === "グー" && value.includes("パー") || pick === "チョキ" && value.includes("グー") || pick == "パー" && value.includes("チョキ")){
         response = `${pick}なん！うちの負けなん！`
     }
-    console.log(response)
     return response
 }
 

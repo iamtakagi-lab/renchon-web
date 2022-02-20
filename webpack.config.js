@@ -25,12 +25,6 @@ const config = {
                 loader: "ts-loader",
                 options: { compilerOptions: { module: "ES2020", moduleResolution: "node" } },
             },
-            {
-                test: /\.css$/i,
-                use: [
-                    'css-loader',
-                ],
-            }
         ],
     },
     resolve: {

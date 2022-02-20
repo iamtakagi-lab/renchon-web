@@ -6,7 +6,7 @@ const randomPick = <T> (array: Array<T>) => array[Math.floor(Math.random() * arr
 const makeRenchonSentence = async () => {
     const { sentence } = (await fetch(`${API_ENDPOINT}/make_sentence`).then(
       (res) => res.json()
-    )) as SentenceRensponse;
+    ) as SentenceRensponse);
     return sentence;
 };
 

@@ -2,6 +2,7 @@
   "name": "talk-with-renchon",
   "version": "1.0.0",
   "scripts": {
+    "dev": "webpack serve",
     "build": "cross-env NODE_ENV=production webpack --mode production"
   },
   "dependencies": {

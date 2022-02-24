@@ -70,7 +70,7 @@ export const App: React.FC<{}> = () => {
             placeholder="メッセージを入力してね"
             onChange={(event) => setChatInput(event.target.value)}
           />
-          <button type="submit" id="chat_send_btn">
+          <button type="submit" className="btn" id="chat_send_btn">
             送信
           </button>
         </form>

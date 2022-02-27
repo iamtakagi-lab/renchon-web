@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { FormEvent, useState } from "react";
+import React, { useEffect, FormEvent, useState } from "react";
 import { doJanken, makeRenchonSentence, pickOmikuji } from "./common";
 import { RENCHON_RESPONSE_DELAY } from "./consts";
 import { Message } from "./types";

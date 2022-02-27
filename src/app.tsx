@@ -26,7 +26,7 @@ export const App: React.FC<{}> = () => {
   const onSend = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //にゃんぱす
-    if(chatInput.match("にゃんぱす")){
+    if(chatInput.match(/にゃんぱす/)){
       addMessage({text: chatInput, sender: "自分" })
       setChatInput("");
       addRenchonMessage({text: "にゃんぱすー", sender: "れんちょん"})

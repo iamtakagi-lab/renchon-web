@@ -1,8 +1,8 @@
-const path = require("path")
+import * as path from 'path';
+import * as webpack from 'webpack';
 const isProduction = process.env.NODE_ENV === "production"
 
-/** @type {import("webpack").Configuration} */
-const config = {
+const config: webpack.Configuration = {
     mode: isProduction ? "production" : "development",
     entry: {
         main: "./src/index.tsx",
@@ -14,27 +14,15 @@ const config = {
         publicPath: "/assets/"
     },
     module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
+        rules: [{
+                test: [/\.tsx?$/, /\.ts$/],
                 loader: "ts-loader",
                 options: { compilerOptions: { module: "ES2020", moduleResolution: "node" } },
-            },
-            {
-                test: /\.ts?$/,
-                loader: "ts-loader",
-                options: { compilerOptions: { module: "ES2020", moduleResolution: "node" } },
-            },
-        ],
+            }
+        ]
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
-    },
-    devtool: "source-map",
-    devServer: {
-        publicPath: "/assets/",
-        contentBase: "public",
-        port: 3030
     },
 }
 

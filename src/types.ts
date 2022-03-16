@@ -3,8 +3,8 @@ type SentenceRensponse = {
 };
   
 enum Sender {
-    Me,
-    Renchon
+    ME,
+    RENCHON
 }
   
 type Message = {

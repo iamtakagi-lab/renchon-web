@@ -1,7 +1,7 @@
 import React, { useEffect, FormEvent, useState } from "react";
 import { doJanken, makeRenchonSentence, pickOmikuji } from "./common";
 import { RENCHON_RESPONSE_DELAY } from "./consts";
-import { Message } from "./types";
+import { Message, Sender } from "./types";
 
 export const App: React.FC<{}> = () => {
   const [chatInput, setChatInput] = useState("");
@@ -9,7 +9,7 @@ export const App: React.FC<{}> = () => {
 
   const initialize = () => {
     window.setTimeout(() => {
-      setMessages([{text: "にゃんぱすー", sender: "れんちょん"}, ...messages])
+      setMessages([{text: "にゃんぱすー", sender: Sender.Renchon }, ...messages])
     }, 500)
   }
 
@@ -27,29 +27,29 @@ export const App: React.FC<{}> = () => {
     e.preventDefault();
     //にゃんぱす
     if(chatInput.match(/にゃんぱす/)){
-      addMessage({text: chatInput, sender: "自分" })
+      addMessage({text: chatInput, sender: Sender.Me })
       setChatInput("");
-      addRenchonMessage({text: "にゃんぱすー", sender: "れんちょん"})
+      addRenchonMessage({text: "にゃんぱすー", sender: Sender.Renchon })
       return
     }
     //占い
     if(chatInput.match(/(?:(?:うらな|占)って|おみくじ)/)){
-      addMessage({text: chatInput, sender: "自分" })
+      addMessage({text: chatInput, sender: Sender.Me })
       setChatInput("");
-      addRenchonMessage({text: pickOmikuji(), sender: "れんちょん"})
+      addRenchonMessage({text: pickOmikuji(), sender: Sender.Renchon })
       return
     }
     //じゃんけん
     if(chatInput.match(/(?:[ぐぱグパ]ー|ちょき|チョキ)/)){
-      addMessage({ text: chatInput, sender: "自分" })
+      addMessage({ text: chatInput, sender: Sender.Me })
       setChatInput("");
-      addRenchonMessage({text: doJanken(chatInput), sender: "れんちょん"})
+      addRenchonMessage({text: doJanken(chatInput), sender: Sender.Renchon })
       return
     }
-    addMessage({ text: chatInput, sender: "自分" });
+    addMessage({ text: chatInput, sender: Sender.Me });
     const sentence = await makeRenchonSentence();
     setChatInput("");
-    addRenchonMessage({text: sentence, sender: "れんちょん" })
+    addRenchonMessage({text: sentence, sender: Sender.Renchon })
   };
 
   return (
@@ -77,7 +77,7 @@ export const App: React.FC<{}> = () => {
           messages.map((message, i) => {
             return (
               <div key={i} className="renchon_balloon">
-                {message.sender === "れんちょん" && (
+                {message.sender === Sender.Renchon && (
                   <div>
                     <div className="renchon_faceicon">
                       <img src="./renchon.jpg" />
@@ -89,7 +89,7 @@ export const App: React.FC<{}> = () => {
                     </div>
                   </div>
                 )}
-                {message.sender === "自分" && (
+                {message.sender === Sender.Me && (
                   <div className="my_balloon">
                     <p>{message.text}</p>
                   </div>

@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import chromium from "chrome-aws-lambda"
+
 const shot = async (sentence: string) => {
     await chromium.font('https://ghcdn.rawgit.org/googlefonts/noto-cjk/main/Sans/SubsetOTF/JP/NotoSansJP-Regular.otf')
     const { puppeteer } = chromium
@@ -16,7 +17,7 @@ const shot = async (sentence: string) => {
     const page = await agent.newPage()
     try {
         const targetElementSelector = '#balloon'
-        await page.goto(`https://renchon.vercel.app/?sentence=${sentence}`)
+        await page.goto(`https://renchon.chat/?sentence=${sentence}`)
         const clip = await page.evaluate((s: any) => {
             const el = document.querySelector(s)
             const { width, height, top: y, left: x } = el.getBoundingClientRect()

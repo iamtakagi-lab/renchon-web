@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext } from "next";
-import { escape } from "querystring";
 import React, { useEffect, useState } from "react";
 import { Seo } from "../components/seo";
 import { API_BASE_URL } from "../consts";
@@ -67,7 +66,7 @@ const Index = ({ querySentence }: Props) => {
   return (
     <div className="container" onClick={() => onClickScreen()}>
       {(sentence && <Seo sentence={sentence} />) ||
-        (querySentence && <Seo sentence={querySentence} ogImageUrl={`https://renchon.vercel.app/image/${querySentence}`} />)}
+        (querySentence && <Seo sentence={querySentence} ogImageUrl={`https://renchon.chat/api/ogp/${querySentence}`} />)}
 
       <div id="balloon">
         <div id="faceicon">

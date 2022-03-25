@@ -1,3 +1,5 @@
+process.setMaxListeners(100)
+
 import { NextApiRequest, NextApiResponse } from "next";
 import nodeHtmlToImage from "node-html-to-image";
 

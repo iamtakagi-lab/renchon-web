@@ -1,19 +1,3 @@
-type SentenceRensponse = {
-    sentence: string;
+export interface SentenceRensponse {
+  sentence: string;
 };
-  
-enum Sender {
-    ME,
-    RENCHON
-}
-  
-type Message = {
-    sender: Sender;
-    text: string;
-};
-
-export {
-    SentenceRensponse,
-    Sender,
-    Message
-}

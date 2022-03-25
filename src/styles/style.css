@@ -1,0 +1,108 @@
+html {
+  font-family: sans-serif;
+  user-select: none;
+}
+
+.container {
+  min-height: 100vh;
+  vertical-align: middle;
+  margin: auto;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.footer {
+  text-align: right;
+  padding: 1rem;
+}
+
+.balloon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  padding: 1rem;
+  padding-bottom: 5vh;
+}
+
+.balloon .faceicon {
+  float: left;
+  margin-right: -70px;
+  width: 80px;
+}
+
+.balloon .faceicon img {
+  width: 100%;
+  height: auto;
+  border: solid 3px #d7ebfe;
+  border-radius: 50%;
+}
+
+.balloon .chatting {
+  width: 100%;
+}
+
+#says {
+  display: inline-block;
+  position: relative;
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+#says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+
+.btn {
+  cursor: pointer;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+  background-color: transparent;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: "NotoSansJP-Bold", sans-serif;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+}
+
+.btn:hover {
+  opacity: 0.7;
+}
+
+#twitter_share_btn {
+  margin-top: 1rem;
+  background-color: #1da1f2;
+}
+
+#twitter_share_btn:hover {
+  opacity: 0.85;
+}

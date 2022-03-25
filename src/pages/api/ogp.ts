@@ -16,6 +16,7 @@ const shot = async (sentence: string) => {
         width: 1200,
         height: 630,
     });
+    await page.setDefaultNavigationTimeout(0);
     try {
         const targetElementSelector = '#ogp_container'
         await page.goto(`https://renchon.chat/ogp?sentence=${sentence}`)

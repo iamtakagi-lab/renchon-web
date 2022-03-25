@@ -24,7 +24,6 @@ export const Seo: React.FC<{
       <meta property="og:url" content="https://renchon.chat" />
 
       <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-      <link rel="stylesheet" href="./style.css" />
 
       <meta
         name="msapplication-square70x70logo"

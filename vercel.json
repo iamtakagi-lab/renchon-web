@@ -1,6 +1,0 @@
-{
-    "routes": [
-        { "src": "/api/.*", "status": 404 },
-        { "src": "^/image/(?<sentence>[^/]*)", "dest": "/api/ogp?sentence=$sentence" }
-    ]
-}

@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
 import { NextApiRequest, NextApiResponse } from "next";
 import chromium from "chrome-aws-lambda"
 const shot = async (sentence: string) => {

@@ -3,7 +3,8 @@ import React from "react";
 
 export const Seo: React.FC<{
   sentence?: string;
-}> = ({ sentence }) => {
+  ogImageUrl?: string;
+}> = ({ sentence, ogImageUrl }) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -13,13 +14,13 @@ export const Seo: React.FC<{
         単語を覚えるれんちょんbot{sentence ? `「${sentence}」` : ""}
       </title>
       <meta property="description" content="にゃんぱすー" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content={ogImageUrl ? "summary_large_image" : "summary" }/>
       <meta name="twitter:site" content="@nyanpassnanon" />
       <meta property="og:title" content="単語を覚えるれんちょんbot" />
       <meta property="og:description" content="にゃんぱすー" />
       <meta property="og:site_name" content="単語を覚えるれんちょんbot" />
 
-      <meta property="og:image" content={"https://renchon.chat/renchon.jpg"} />
+      <meta property="og:image" content={ogImageUrl ? ogImageUrl : "https://renchon.chat/renchon.jpg"} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://renchon.chat" />
 

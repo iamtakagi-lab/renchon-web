@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from "next";
+import { escape } from "querystring";
 import React, { useEffect, useState } from "react";
 import { Seo } from "../components/seo";
 import { API_BASE_URL } from "../consts";
@@ -60,6 +61,7 @@ const Index = ({ querySentence }: Props) => {
   const onClickScreen = async () => {
     setSentence(await makeSentence());
     increment();
+    console.log(encodeURIComponent(`https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot「${sentence}」&url=${encodeURIComponent(`https://renchon.chat/?sentence=${sentence}`)}`))
   };
 
   return (
@@ -82,7 +84,8 @@ const Index = ({ querySentence }: Props) => {
             id="twitter_share_btn"
             onClick={() =>
               window.open(
-                `https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot「${sentence}」&url=${encodeURIComponent(`https://renchon.chat/?sentence=${sentence}`)}`,
+                `https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot` +
+                encodeURI(`「${sentence}」&url=${`https://renchon.chat/?sentence=${encodeURIComponent(sentence)}`}`),
                 "_blank",
                 "noreferrer"
               )

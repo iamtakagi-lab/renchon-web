@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer'
 
 const shot = async (sentence: string) => {
     const agent = await puppeteer.launch({
-        args: [ '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'],
+        args: [ '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1200,630'],
         defaultViewport: null,
         env: {
             ...process.env,
@@ -12,13 +12,17 @@ const shot = async (sentence: string) => {
     })
 
     const page = await agent.newPage()
+    await page.setViewport({
+        width: 1200,
+        height: 630,
+    });
     try {
         const targetElementSelector = '#ogp_container'
         await page.goto(`https://renchon.chat/ogp?sentence=${sentence}`)
         const clip = await page.evaluate((s: any) => {
             const el = document.querySelector(s)
             const { width, height, top: y, left: x } = el.getBoundingClientRect()
-            return { width, height, x, y }
+            return { width: width, height, x, y }
         }, targetElementSelector)
         return await page.screenshot({ clip, type: "png" })
     } finally {

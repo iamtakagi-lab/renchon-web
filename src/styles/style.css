@@ -9,8 +9,8 @@ html {
 }
 
 #ogp_container {
-  width: 1200px;
-  height: 630px;
+  width: 1160px;
+  height: 590px;
   vertical-align: middle;
   margin: auto;
   display: flex;
@@ -76,7 +76,7 @@ html {
 }
 
 #ogp_logo_username {
-  font-size: 3.4rem;
+  font-size: 3.1rem;
 }
 
 #container {

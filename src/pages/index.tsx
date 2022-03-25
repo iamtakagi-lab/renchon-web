@@ -60,7 +60,6 @@ const Index = ({ querySentence }: Props) => {
   const onClickScreen = async () => {
     setSentence(await makeSentence());
     increment();
-    console.log(encodeURIComponent(`https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot「${sentence}」&url=${encodeURIComponent(`https://renchon.chat/?sentence=${sentence}`)}`))
   };
 
   return (

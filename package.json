@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/node": "^17.0.22",
     "@types/react": "^17.0.42",
+    "@types/puppeteer-core": "^5.4.0",
     "typescript": "^4.4.3"
   }
 }

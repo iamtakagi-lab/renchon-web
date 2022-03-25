@@ -66,7 +66,7 @@ const Index = ({ querySentence }: Props) => {
   return (
     <div className="container" onClick={() => onClickScreen()}>
       {(sentence && <Seo sentence={sentence} />) ||
-        (querySentence && <Seo sentence={querySentence} ogImageUrl={`https://renchon.chat/api/ogp/${querySentence}`} />)}
+        (querySentence && <Seo sentence={querySentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${querySentence}`} />)}
 
       <div id="balloon">
         <div id="faceicon">

@@ -14,7 +14,7 @@ const shot = async (sentence: string) => {
     const page = await agent.newPage()
     try {
         const targetElementSelector = '#ogp_container'
-        await page.goto(`httsp://renchon.chat/ogp?sentence=${sentence}`)
+        await page.goto(`https://renchon.chat/ogp?sentence=${sentence}`)
         const clip = await page.evaluate((s: any) => {
             const el = document.querySelector(s)
             const { width, height, top: y, left: x } = el.getBoundingClientRect()

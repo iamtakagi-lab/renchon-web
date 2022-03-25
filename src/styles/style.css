@@ -22,7 +22,7 @@ a {
   padding: 1rem;
 }
 
-.balloon {
+#balloon {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,20 +33,20 @@ a {
   padding-bottom: 5vh;
 }
 
-.balloon .faceicon {
+#balloon #faceicon {
   float: left;
   margin-right: -70px;
-  width: 80px;
+  width: 120px;
 }
 
-.balloon .faceicon img {
+#balloon #faceicon img {
   width: 100%;
   height: auto;
   border: solid 3px #d7ebfe;
   border-radius: 50%;
 }
 
-.balloon .chatting {
+#balloon #chatting {
   width: 100%;
 }
 

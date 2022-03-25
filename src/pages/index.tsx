@@ -69,11 +69,11 @@ const Index = ({ querySentence }: Props) => {
       {(sentence && <Seo sentence={sentence} />) ||
         (querySentence && <Seo sentence={querySentence} />)}
 
-      <div className="balloon">
-        <div className="faceicon">
+      <div id="balloon">
+        <div id="faceicon">
           <img src="./renchon.jpg" alt="renchon" />
         </div>
-        <div className="chatting">
+        <div id="chatting">
           <div id="says">{sentence}</div>
         </div>
       </div>

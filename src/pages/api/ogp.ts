@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
  
      // テキスト設定
      var limitedWidth = boxWidth - (padding * 2);
-     var size = 38;
+     var size = 45;
      context.font = size + "px ''";
  
      // テキスト調整　行に分解

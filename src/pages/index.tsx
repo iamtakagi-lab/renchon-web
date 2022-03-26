@@ -27,7 +27,7 @@ const Index = () => {
 
   return (
     <div id="container" onClick={() => onClickScreen()}>
-      {(sentence && <Seo sentence={sentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`} /> )}
+      {(sentence ? <Seo sentence={sentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`} /> : <Seo /> )}
       <div id="balloon">
         <div id="faceicon">
           <img src="./renchon.jpg" alt="renchon" />

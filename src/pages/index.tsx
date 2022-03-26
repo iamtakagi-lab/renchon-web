@@ -1,10 +1,10 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
-import { makeSentence } from "../common";
+import { makeSentence } from "../api";
 import { Seo } from "../components/seo";
 import { useCounter } from "../counter";
 
-const Index = () => {
+const IndexPage = () => {
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
 
@@ -72,4 +72,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexPage;

@@ -1,7 +1,6 @@
 import { createCanvas, loadImage, registerFont } from "canvas";
 import { NextApiRequest, NextApiResponse } from "next";
 import path from "path";
-import stream from "stream";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("X-Robots-Tag", "noindex");

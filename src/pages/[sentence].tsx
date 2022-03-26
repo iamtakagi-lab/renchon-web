@@ -1,13 +1,9 @@
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/dist/client/router";
-import { route } from "next/dist/server/router";
-import { emitWarning } from "process";
 import React, { useEffect, useState } from "react";
-import { makeSentence } from "../common";
+import { makeSentence } from "../api";
 import { Seo } from "../components/seo";
-import { API_BASE_URL } from "../consts";
 import { useCounter } from "../counter";
-import { SentenceRensponse } from "../types";
 
 type Props = {
   querySentence?: string;
@@ -29,7 +25,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return { props: {} };
 };
 
-const Index = ({ querySentence }: Props) => {
+const SentencePage = ({ querySentence }: Props) => {
 
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
@@ -112,4 +108,4 @@ const Index = ({ querySentence }: Props) => {
   );
 };
 
-export default Index;
+export default SentencePage;

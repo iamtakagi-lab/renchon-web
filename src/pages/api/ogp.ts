@@ -1,137 +1,123 @@
-process.setMaxListeners(Infinity)
-
+import { createCanvas, loadImage, registerFont } from "canvas";
 import { NextApiRequest, NextApiResponse } from "next";
-import nodeHtmlToImage from "node-html-to-image";
+import path from "path";
+import stream from "stream";
 
-const image = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("X-Robots-Tag", "noindex");
   const { sentence } = req.query;
   if (!sentence || sentence === null || typeof sentence !== "string")
     return res.status(500);
+  
+  const fontPath = path.resolve("assets", "fonts", "NotoSansJP-Medium.otf")
+  const fnt = registerFont(fontPath, {
+    family: "NotoSansJP-Medium"
+  })
 
-  const image = await nodeHtmlToImage({
-      puppeteerArgs: {
-        args: [ '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1200,630'],
-        env: {
-            ...process.env,
-            LANG: "ja_JP.UTF-8"
-        }
-      },
-    html: `
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <style>
-        @charset "UTF-8";
-        @font-face {
-            font-family: "NotoSansJP-Medium";
-            src: url("/fonts/NotoSansJP-Medium.ttf") format("truetype");
-        }
-          
-        html {
-            font-family: "NotoSansJP-Medium", sans-serif;
-        }
+  try {
+    const canvas = createCanvas(1200, 630);
+    const ctx = canvas.getContext("2d");
 
-        body {
-            width: 1160px;
-            height: 590px;
-            border: solid 20px #8ddafd;
-        }
-          
-        #ogp_container {
-            width: 100%;
-            height: 100%;
-            align-items: center;
-            vertical-align: middle;
-            margin: auto;
-            display: flex;
-            overflow: hidden;
-            flex-direction: column;
-          }
-          
-          #ogp_balloon {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            width: fit-content;
-            margin: auto;
-            padding: 1rem;
-            padding-bottom: 5vh;
-          }
-          
-          #ogp_balloon #ogp_faceicon {
-            float: left;
-            margin-right: -70px;
-            width: 380px;
-          }
-          
-          #ogp_balloon #ogp_faceicon img {
-            width: 100%;
-            height: auto;
-            border: solid 3px #d7ebfe;
-            border-radius: 50%;
-          }
-          
-          #ogp_balloon #ogp_chatting {
-            width: 100%;
-          }
-          
-          #ogp_says {
-            display: inline-block;
-            position: relative;
-            margin: 5px 0 0 105px;
-            padding: 17px 13px;
-            border-radius: 12px;
-            background: #d7ebfe;
-            font-size: 40px;
-          }
-          
-          #ogp_says:after {
-            content: "";
-            display: inline-block;
-            position: absolute;
-            top: 18px;
-            left: -24px;
-            border: 12px solid transparent;
-            border-right: 12px solid #d7ebfe;
-          }
-          
-          #ogp_logo {
-            align-items: center;
-            padding: 0 auto;
-            margin: 0 auto;
-            margin-bottom: 100px;
-          }
-          
-          #ogp_logo_username {
-            font-size: 3.1rem;
-          }
-        </style>
-    </head>
-    <body>
-        <div id="ogp_container">
-            <div id="ogp_balloon">
-                <div id="ogp_faceicon">
-                    <img src="https://i.imgur.com/txA9vt8.jpeg" alt="renchon" />
-                </div>
-                <div id="ogp_chatting">
-                    <div id="ogp_says">{{sentence}}</div>
-                </div>
-            </div>
-            <div id="ogp_logo">
-                <div id="ogp_logo_username">単語を覚えるれんちょんbot</div>
-            </div>
-        </div>
-    </body>
-    `,
-    content: { sentence },
-  });
+    const imgSource = path.resolve("assets", "ogp_base.png")
 
-  res.setHeader("Content-Type", "image/png");
-  res.setHeader("Content-DPR", "2.0");
-  res.setHeader("Cache-Control", "max-age=300, public, stale-while-revalidate");
-  res.send(image);
+    // Draw base image
+    const ogpBaseImg = await loadImage(imgSource);
+    ctx.drawImage(ogpBaseImg, 0, 0);
+    
+    // Draw sentence
+     // 基本設定
+     var originX = 385;// 矢印X座標
+     var originY = 360;// 矢印Y座標
+     var boxWidth = 650;
+     var padding = 10;
+     var radius = 40;// 円弧の半径
+ 
+ 
+     var context = canvas.getContext("2d");
+     context.fillStyle = "#b7e6ff";
+ 
+     // テキスト設定
+     var limitedWidth = boxWidth - (padding * 2);
+     var size = 35;
+     context.font = size + "px ''";
+ 
+     // テキスト調整　行に分解
+     var lineTextList = sentence.split("\n");
+     var newLineTextList: string[] = [];
+     lineTextList.forEach(function (lineText) {
+         if (context.measureText(lineText).width > limitedWidth) {
+             const characterList = lineText.split("");// 1文字ずつ分割
+             var preLineText = "";
+             var lineText = "";
+             characterList.forEach(function (character) {
+                 lineText += character;
+                 if (context.measureText(lineText).width > limitedWidth) {
+                     newLineTextList.push(preLineText);
+                     lineText = character;
+                 }
+                 preLineText = lineText;
+             });
+         }
+         newLineTextList.push(lineText);
+     });
+     var lineLength = newLineTextList.length;
+ 
+       // 矢印
+    var arrow = {
+      "x" : originX,
+      "y" : originY,
+      "width" : 20,
+      "height" : 10,
+    }
+     context.beginPath();
+     context.moveTo(arrow.x, arrow.y);
+     context.lineTo(arrow.x + arrow.width / 2, arrow.y + arrow.height);
+     context.lineTo(arrow.x - arrow.width / 2, arrow.y + arrow.height);
+     ctx.beginPath();
+     ctx.moveTo(arrow.x, arrow.y)
+     ctx.lineTo(arrow.x + 25, arrow.y + 25);
+     ctx.lineTo(arrow.x + 25, arrow.y - 25);
+     context.fill();
+
+     
+     // 角丸
+     var width = boxWidth;// 枠の幅
+     var height = (size * lineLength) + (padding * 5);// 枠の高さ
+     var toRadianCoefficient = Math.PI / 180;// 角度からラジアンへの変換係数
+     // 角丸原点（左上座標）
+     var boxOrigin = {
+         "x" : arrow.x + 10,
+         "y" : arrow.y - 50,
+     }
+     // 円弧から円弧までの直線は自動で引かれます、角度は回り方によって変わります。
+     // arc(中心x, 中心y, 半径, 開始角度, 終了角度, 反時計回り)
+     context.beginPath();
+     context.arc(boxOrigin.x + radius, boxOrigin.y + radius, radius, 180 * toRadianCoefficient, 270 * toRadianCoefficient, false);// 左上
+     context.arc(boxOrigin.x + width - radius, boxOrigin.y + radius, radius, 270 * toRadianCoefficient, 0, false);// 右上
+     context.arc(boxOrigin.x + width - radius, boxOrigin.y + height - radius, radius, 0, 90 * toRadianCoefficient, false);// 右下
+     context.arc(boxOrigin.x + radius, boxOrigin.y + height - radius, radius, 90 * toRadianCoefficient, 180 * toRadianCoefficient, false);// 左下
+     context.closePath();
+     context.fill();
+ 
+     // テキスト描画
+     context.fillStyle = "#000000";
+     newLineTextList.forEach(function (lineText, index) {
+         context.fillText(lineText, boxOrigin.x + padding, boxOrigin.y + padding + (size * (index + 1)));
+     });
+
+    const buffer = canvas.toBuffer()
+
+    res.writeHead(200, {
+      'Cache-Control': 'public, max-age=315360000, s_maxage=315360000',
+      Expires: new Date(Date.now() + 315360000000).toUTCString(),
+      'Content-Type': 'image/png',
+      'Content-Length': buffer.length,
+      "Content-DPR": "2.0"
+    })
+    res.end(buffer, 'binary')
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export default image;
+export default handler;

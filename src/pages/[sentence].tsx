@@ -1,10 +1,36 @@
+import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/dist/client/router";
+import { route } from "next/dist/server/router";
+import { emitWarning } from "process";
 import React, { useEffect, useState } from "react";
 import { makeSentence } from "../common";
 import { Seo } from "../components/seo";
+import { API_BASE_URL } from "../consts";
 import { useCounter } from "../counter";
+import { SentenceRensponse } from "../types";
 
-const Index = () => {
+type Props = {
+  querySentence?: string;
+  error?: {
+    status: number;
+    message: string;
+  };
+};
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const { sentence } = ctx.query;
+
+  if (sentence && sentence !== null && typeof sentence === "string")
+    return {
+      props: {
+        querySentence: sentence,
+      },
+    };
+  return { props: {} };
+};
+
+const Index = ({ querySentence }: Props) => {
+
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
 
@@ -16,7 +42,14 @@ const Index = () => {
   }
 
   useEffect(() => {
-    generateSentence();
+    if (querySentence) {
+      setSentence(querySentence);
+      increment()
+      return
+    }
+    if (!querySentence) {
+      generateSentence()
+    }
   }, []);
 
   const router = useRouter()
@@ -25,9 +58,16 @@ const Index = () => {
     await generateSentence();
   };
 
-  return (
+   return (
     <div id="container" onClick={() => onClickScreen()}>
-      {(sentence && <Seo sentence={sentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`} /> )}
+      {(sentence && <Seo sentence={sentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`}/>) ||
+        (querySentence && (
+          <Seo
+            sentence={querySentence}
+            ogImageUrl={`https://renchon.chat/api/ogp?sentence=${querySentence}`}
+          />
+        ))}
+
       <div id="balloon">
         <div id="faceicon">
           <img src="./renchon.jpg" alt="renchon" />

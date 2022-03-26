@@ -28,17 +28,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      // 基本設定
      var originX = 385;// 矢印X座標
      var originY = 360;// 矢印Y座標
-     var boxWidth = 650;
-     var padding = 10;
+     var boxWidth = 630;
+     var padding = 7;
      var radius = 40;// 円弧の半径
  
  
      var context = canvas.getContext("2d");
-     context.fillStyle = "#b7e6ff";
+     context.fillStyle = "#d7ebfe";
  
      // テキスト設定
      var limitedWidth = boxWidth - (padding * 2);
-     var size = 35;
+     var size = 38;
      context.font = size + "px ''";
  
      // テキスト調整　行に分解
@@ -87,7 +87,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      // 角丸原点（左上座標）
      var boxOrigin = {
          "x" : arrow.x + 10,
-         "y" : arrow.y - 50,
+         "y" : arrow.y - 40,
      }
      // 円弧から円弧までの直線は自動で引かれます、角度は回り方によって変わります。
      // arc(中心x, 中心y, 半径, 開始角度, 終了角度, 反時計回り)
@@ -102,7 +102,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      // テキスト描画
      context.fillStyle = "#000000";
      newLineTextList.forEach(function (lineText, index) {
-         context.fillText(lineText, boxOrigin.x + padding, boxOrigin.y + padding + (size * (index + 1)));
+         context.fillText(lineText, boxOrigin.x + padding, boxOrigin.y + (padding + 3) + (size * (index + 1)));
      });
 
     const buffer = canvas.toBuffer()

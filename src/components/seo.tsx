@@ -5,18 +5,19 @@ export const Seo: React.FC<{
   sentence?: string;
   ogImageUrl?: string;
 }> = ({ sentence, ogImageUrl }) => {
+  const pageTitle = `単語を覚えるれんちょんbot ${sentence ? `「${sentence}」` : ''}`
   return (
     <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta charSet="UTF-8" />
       <meta name="referrer" content="origin" />
       <title>
-        単語を覚えるれんちょんbot{sentence ? `「${sentence}」` : ""}
+        {pageTitle}
       </title>
       <meta property="description" content="にゃんぱすー" />
       <meta name="twitter:card" content={ogImageUrl ? "summary_large_image" : "summary" }/>
       <meta name="twitter:site" content="@nyanpassnanon" />
-      <meta property="og:title" content="単語を覚えるれんちょんbot" />
+      <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content="にゃんぱすー" />
       <meta property="og:site_name" content="単語を覚えるれんちょんbot" />
 

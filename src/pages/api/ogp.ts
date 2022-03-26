@@ -28,7 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      // 基本設定
      var originX = 385;// 矢印X座標
      var originY = 360;// 矢印Y座標
-     var boxWidth = 630;
+     var boxWidth = 750;
      var padding = 7;
      var radius = 40;// 円弧の半径
  
@@ -86,7 +86,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      var toRadianCoefficient = Math.PI / 180;// 角度からラジアンへの変換係数
      // 角丸原点（左上座標）
      var boxOrigin = {
-         "x" : arrow.x + 10,
+         "x" : arrow.x + 8,
          "y" : arrow.y - 40,
      }
      // 円弧から円弧までの直線は自動で引かれます、角度は回り方によって変わります。
@@ -102,7 +102,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      // テキスト描画
      context.fillStyle = "#000000";
      newLineTextList.forEach(function (lineText, index) {
-         context.fillText(lineText, boxOrigin.x + padding, boxOrigin.y + (padding + 3) + (size * (index + 1)));
+         context.fillText(lineText, boxOrigin.x + (padding + 20), boxOrigin.y + (padding + 3) + (size * (index + 1)));
      });
 
     const buffer = canvas.toBuffer()

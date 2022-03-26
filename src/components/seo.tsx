@@ -5,7 +5,7 @@ export const Seo: React.FC<{
   sentence?: string;
   ogImageUrl?: string;
 }> = ({ sentence, ogImageUrl }) => {
-  const pageTitle = `単語を覚えるれんちょんbot ${sentence ? `「${sentence}」` : ''}`
+  const pageTitle = `単語を覚えるれんちょんbot${sentence ? `「${sentence}」` : ''}`
   return (
     <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1" />

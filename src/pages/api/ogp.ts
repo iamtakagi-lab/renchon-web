@@ -30,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      var originY = 360;// 矢印Y座標
      var boxWidth = 750;
      var padding = 7;
-     var radius = 40;// 円弧の半径
+     var radius = 20;// 円弧の半径
  
  
      var context = canvas.getContext("2d");
@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
  
      // テキスト設定
      var limitedWidth = boxWidth - (padding * 2);
-     var size = 45;
+     var size = 40;
      context.font = size + "px ''";
  
      // テキスト調整　行に分解

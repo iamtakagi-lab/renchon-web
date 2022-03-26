@@ -1,4 +1,4 @@
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { makeSentence } from "../api";
 import { Seo } from "../components/seo";
@@ -7,6 +7,7 @@ import { useCounter } from "../counter";
 const IndexPage = () => {
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
+  const router = useRouter()
 
   const generateSentence = async () => {
     const newSentence = await makeSentence()
@@ -19,7 +20,6 @@ const IndexPage = () => {
     generateSentence();
   }, []);
 
-  const router = useRouter()
 
   const onClickScreen = async () => {
     await generateSentence();

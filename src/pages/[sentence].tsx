@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { makeSentence } from "../api";
 import { Seo } from "../components/seo";
@@ -29,6 +29,7 @@ const SentencePage = ({ querySentence }: Props) => {
 
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
+  const router = useRouter()
 
   const generateSentence = async () => {
     const newSentence = await makeSentence()
@@ -47,8 +48,6 @@ const SentencePage = ({ querySentence }: Props) => {
       generateSentence()
     }
   }, []);
-
-  const router = useRouter()
 
   const onClickScreen = async () => {
     await generateSentence();

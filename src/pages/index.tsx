@@ -13,7 +13,7 @@ const IndexPage = () => {
     const newSentence = await makeSentence()
     setSentence(newSentence);
     increment();
-    router.push(newSentence)
+    router.push(newSentence, undefined, { shallow: true })
   }
 
   useEffect(() => {

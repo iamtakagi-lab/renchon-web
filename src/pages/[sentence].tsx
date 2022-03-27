@@ -26,26 +26,25 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 };
 
 const SentencePage = ({ querySentence }: Props) => {
-
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
-  const router = useRouter()
+  const router = useRouter();
 
   const generateSentence = async () => {
-    const newSentence = await makeSentence()
+    const newSentence = await makeSentence();
     setSentence(newSentence);
     increment();
-    router.push(newSentence, undefined, { shallow: true })
-  }
+    router.push(newSentence, undefined, { shallow: true });
+  };
 
   useEffect(() => {
     if (querySentence) {
       setSentence(querySentence);
-      increment()
-      return
+      increment();
+      return;
     }
     if (!querySentence) {
-      generateSentence()
+      generateSentence();
     }
   }, []);
 
@@ -53,12 +52,17 @@ const SentencePage = ({ querySentence }: Props) => {
     await generateSentence();
   };
 
-   return (
+  return (
     <div id="container" onClick={() => onClickScreen()}>
-      {(sentence && <Seo sentence={sentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`}/>) ||
+      {(sentence && (
+        <Seo
+          pageSubTitle={`「${sentence}」`}
+          ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`}
+        />
+      )) ||
         (querySentence && (
           <Seo
-            sentence={querySentence}
+            pageSubTitle={`「${querySentence}」`}
             ogImageUrl={`https://renchon.chat/api/ogp?sentence=${querySentence}`}
           />
         ))}
@@ -102,6 +106,14 @@ const SentencePage = ({ querySentence }: Props) => {
             @nyanpassnanon
           </a>
         </div>
+        <a
+          href="https:/renchon.chat/privacy_policy"
+          target="_blank"
+          rel="noreferrer noopener"
+          style={{fontSize: "10px"}}
+        >
+          プライバシーポリシー
+        </a>
       </div>
     </div>
   );

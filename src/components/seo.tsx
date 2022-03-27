@@ -2,10 +2,10 @@ import Head from "next/head";
 import React from "react";
 
 export const Seo: React.FC<{
-  sentence?: string;
+  pageSubTitle?: string;
   ogImageUrl?: string;
-}> = ({ sentence, ogImageUrl }) => {
-  const pageTitle = `単語を覚えるれんちょんbot${sentence ? `「${sentence}」` : ''}`
+}> = ({ pageSubTitle, ogImageUrl }) => {
+  const pageTitle = `単語を覚えるれんちょんbot${pageSubTitle}`
   return (
     <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1" />

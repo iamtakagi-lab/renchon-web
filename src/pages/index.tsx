@@ -7,19 +7,18 @@ import { useCounter } from "../counter";
 const IndexPage = () => {
   const [sentence, setSentence] = useState("");
   const { count, increment } = useCounter();
-  const router = useRouter()
+  const router = useRouter();
 
   const generateSentence = async () => {
-    const newSentence = await makeSentence()
+    const newSentence = await makeSentence();
     setSentence(newSentence);
     increment();
-    router.push(newSentence, undefined, { shallow: true })
-  }
+    router.push(newSentence, undefined, { shallow: true });
+  };
 
   useEffect(() => {
     generateSentence();
   }, []);
-
 
   const onClickScreen = async () => {
     await generateSentence();
@@ -27,7 +26,14 @@ const IndexPage = () => {
 
   return (
     <div id="container" onClick={() => onClickScreen()}>
-      {(sentence ? <Seo sentence={sentence} ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`} /> : <Seo /> )}
+      {sentence ? (
+        <Seo
+          pageSubTitle={`「${sentence}」`}
+          ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`}
+        />
+      ) : (
+        <Seo />
+      )}
       <div id="balloon">
         <div id="faceicon">
           <img src="./renchon.jpg" alt="renchon" />
@@ -67,6 +73,14 @@ const IndexPage = () => {
             @nyanpassnanon
           </a>
         </div>
+        <a
+          href="https:/renchon.chat/privacy_policy"
+          target="_blank"
+          rel="noreferrer noopener"
+          style={{fontSize: "10px"}}
+        >
+          プライバシーポリシー
+        </a>
       </div>
     </div>
   );

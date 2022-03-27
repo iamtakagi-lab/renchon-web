@@ -74,7 +74,7 @@ const IndexPage = () => {
           </a>
         </div>
         <a
-          href="https:/renchon.chat/privacy_policy"
+          href="https://renchon.chat/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"
           style={{fontSize: '13px'}}

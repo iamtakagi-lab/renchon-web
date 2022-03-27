@@ -77,7 +77,6 @@ const IndexPage = () => {
           href="https://renchon.chat/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"
-          style={{fontSize: '13px'}}
         >
           プライバシーポリシー
         </a>

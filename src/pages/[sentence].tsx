@@ -110,7 +110,7 @@ const SentencePage = ({ querySentence }: Props) => {
           href="https:/renchon.chat/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"
-          style={{fontSize: "10px"}}
+          style={{fontSize: '13px'}}
         >
           プライバシーポリシー
         </a>

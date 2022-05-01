@@ -1,9 +1,9 @@
 name: Build and Push Image
 
 on:
-  create:
-    tags:
-      - '*'
+  push:
+    paths-ignore:
+      - '*.md'
 
   workflow_dispatch:
 

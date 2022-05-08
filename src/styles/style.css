@@ -1,6 +1,6 @@
 @font-face {
   font-family: "NotoSansJP-Medium";
-  src: url("/fonts/NotoSansJP-Medium.ttf") format("truetype");
+  src: url("/fonts/NotoSansJP-Medium.otf") format("truetype");
 }
 
 html {

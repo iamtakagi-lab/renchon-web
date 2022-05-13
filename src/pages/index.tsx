@@ -29,7 +29,7 @@ const IndexPage = () => {
       {sentence ? (
         <Seo
           pageSubTitle={`「${sentence}」`}
-          ogImageUrl={`https://renchon.chat/api/ogp?sentence=${sentence}`}
+          ogImageUrl={`https://renchon.iamtakagi.net/api/ogp?sentence=${sentence}`}
         />
       ) : (
         <Seo />
@@ -51,7 +51,7 @@ const IndexPage = () => {
             window.open(
               `https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot` +
                 encodeURI(
-                  `「${sentence}」&url=${`https://renchon.chat/${encodeURIComponent(
+                  `「${sentence}」&url=${`https://renchon.iamtakagi.net/${encodeURIComponent(
                     sentence
                   )}`}`
                 ),
@@ -74,7 +74,7 @@ const IndexPage = () => {
           </a>
         </div>
         <a
-          href="https://renchon.chat/privacy_policy"
+          href="https://renchon.iamtakagi.net/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"
         >

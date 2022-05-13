@@ -6,7 +6,7 @@ const PrivacyPolicy = () => (
   <>
     <Seo pageSubTitle=" / プライバシーポリシー" />
     <header>
-      <a href="https://renchon.chat">renchon.chat</a>
+      <a href="https://renchon.iamtakagi.net">renchon.iamtakagi.net</a>
     </header>
     <section id="privacy_policy">
       <h1>プライバシーポリシー</h1>

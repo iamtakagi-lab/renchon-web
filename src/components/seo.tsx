@@ -21,9 +21,9 @@ export const Seo: React.FC<{
       <meta property="og:description" content="にゃんぱすー" />
       <meta property="og:site_name" content="単語を覚えるれんちょんbot" />
 
-      <meta property="og:image" content={ogImageUrl ? ogImageUrl : "https://renchon.chat/renchon.jpg"} />
+      <meta property="og:image" content={ogImageUrl ? ogImageUrl : "https://renchon.iamtakagi.net/renchon.jpg"} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://renchon.chat" />
+      <meta property="og:url" content="https://renchon.iamtakagi.net" />
 
       <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 

@@ -74,6 +74,13 @@ const IndexPage = () => {
           </a>
         </div>
         <a
+          href="https://github.com/renchon-iamtakagi-net"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          GitHub
+        </a>
+        <a
           href="https://renchon.iamtakagi.net/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"

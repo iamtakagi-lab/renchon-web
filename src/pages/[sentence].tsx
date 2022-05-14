@@ -110,6 +110,7 @@ const SentencePage = ({ querySentence }: Props) => {
           href="https://github.com/renchon-iamtakagi-net"
           target="_blank"
           rel="noreferrer noopener"
+          style={{marginRight: "1rem"}}
         >
           GitHub
         </a>

@@ -57,13 +57,13 @@ const SentencePage = ({ querySentence }: Props) => {
       {(sentence && (
         <Seo
           pageSubTitle={`「${sentence}」`}
-          ogImageUrl={`https://renchon.iamtakagi.net/api/ogp?sentence=${sentence}`}
+          ogImageUrl={`https://renchon.iamtakagi.vercel.app/api/ogp?sentence=${sentence}`}
         />
       )) ||
         (querySentence && (
           <Seo
             pageSubTitle={`「${querySentence}」`}
-            ogImageUrl={`https://renchon.iamtakagi.net/api/ogp?sentence=${querySentence}`}
+            ogImageUrl={`https://renchon.iamtakagi.vercel.app/api/ogp?sentence=${querySentence}`}
           />
         ))}
 
@@ -84,7 +84,7 @@ const SentencePage = ({ querySentence }: Props) => {
             window.open(
               `https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot` +
                 encodeURI(
-                  `「${sentence}」&url=${`https://renchon.iamtakagi.net/${encodeURIComponent(
+                  `「${sentence}」&url=${`https://renchon.iamtakagi.vercel.app/${encodeURIComponent(
                     sentence
                   )}`}`
                 ),
@@ -115,7 +115,7 @@ const SentencePage = ({ querySentence }: Props) => {
           GitHub
         </a>
         <a
-          href="https://renchon.iamtakagi.net/privacy_policy"
+          href="https://renchon.iamtakagi.vercel.app/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"
         >

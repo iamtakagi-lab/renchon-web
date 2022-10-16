@@ -29,7 +29,7 @@ const IndexPage = () => {
       {sentence ? (
         <Seo
           pageSubTitle={`「${sentence}」`}
-          ogImageUrl={`https://renchon.iamtakagi.net/api/ogp?sentence=${sentence}`}
+          ogImageUrl={`https://renchon.iamtakagi.vercel.app/api/ogp?sentence=${sentence}`}
         />
       ) : (
         <Seo />
@@ -51,7 +51,7 @@ const IndexPage = () => {
             window.open(
               `https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot` +
                 encodeURI(
-                  `「${sentence}」&url=${`https://renchon.iamtakagi.net/${encodeURIComponent(
+                  `「${sentence}」&url=${`https://renchon.iamtakagi.vercel.app/${encodeURIComponent(
                     sentence
                   )}`}`
                 ),
@@ -82,7 +82,7 @@ const IndexPage = () => {
           GitHub
         </a>
         <a
-          href="https://renchon.iamtakagi.net/privacy_policy"
+          href="https://renchon.iamtakagi.vercel.app/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"
         >

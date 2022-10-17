@@ -181,7 +181,7 @@ export const Seo: React.FC<{
         rel="icon"
         type="image/png"
         sizes="72x72"
-        href="./favicons/icon-72x72.png"
+        href="/favicons/icon-72x72.png"
       />
       <link
         rel="icon"

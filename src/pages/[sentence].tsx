@@ -84,7 +84,7 @@ const SentencePage = ({ querySentence }: Props) => {
             window.open(
               `https://twitter.com/intent/tweet?text=単語を覚えるれんちょんbot` +
                 encodeURI(
-                  `「${sentence}」&url=${`https://renchon.iamtakagi.vercel.app/${encodeURIComponent(
+                  `「${sentence}」\r\n${count}回セリフを生成しました！&url=${`https://renchon.iamtakagi.vercel.app/${encodeURIComponent(
                     sentence
                   )}`}`
                 ),

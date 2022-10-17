@@ -74,14 +74,6 @@ const IndexPage = () => {
           </a>
         </div>
         <a
-          href="https://github.com/iamtakagi"
-          target="_blank"
-          rel="noreferrer noopener"
-          style={{marginRight: "1rem"}}
-        >
-          Author
-        </a>
-        <a
           href="https://renchon.iamtakagi.vercel.app/privacy_policy"
           target="_blank"
           rel="noreferrer noopener"

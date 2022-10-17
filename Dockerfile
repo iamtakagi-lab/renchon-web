@@ -1,6 +1,4 @@
-FROM node:17
-
-ENV NODE_OPTIONS=--openssl-legacy-provider
+FROM node:14
 
 WORKDIR /app
 COPY package.json /app/

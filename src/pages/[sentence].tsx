@@ -107,12 +107,12 @@ const SentencePage = ({ querySentence }: Props) => {
           </a>
         </div>
         <a
-          href="https://github.com/renchon-iamtakagi-net"
+          href="https://github.com/iamtakagi"
           target="_blank"
           rel="noreferrer noopener"
           style={{marginRight: "1rem"}}
         >
-          GitHub
+          Author
         </a>
         <a
           href="https://renchon.iamtakagi.vercel.app/privacy_policy"

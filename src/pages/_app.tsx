@@ -1,5 +1,4 @@
 import { GoogleAnalytics } from "../components/ga";
-import { Seo } from "../components/seo";
 import "../styles/style.css";
 
 export const App: React.FC<{
